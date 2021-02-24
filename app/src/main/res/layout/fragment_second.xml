@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SecondFragment">
+
+    <TextView
+        android:id="@+id/textview_second"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_second_fragment"
+        style="@style/BaseStyle"
+        app:layout_constraintBottom_toTopOf="@id/dividerup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/dividerup"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintTop_toBottomOf="@id/textview_second" />
+
+
+    <TextView
+        android:id="@+id/textDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:text="12/12/12"
+        style="@style/BaseStyle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dividerup"
+        tools:layout_editor_absoluteX="47dp" />
+
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/textInputEditItineraire"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="hint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textDate"
+        tools:layout_editor_absoluteX="-30dp"
+        tools:layout_editor_absoluteY="477dp" />
+
+    <EditText
+        android:id="@+id/editKmNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textInputEditItineraire"
+        tools:layout_editor_absoluteX="63dp"
+        tools:layout_editor_absoluteY="533dp" />
+
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chip_group1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:chipSpacing="0dp"
+        app:layout_constraintBottom_toTopOf="@id/chip_group10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editKmNumber">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_plus1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+1" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_minus1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-1" />
+    </com.google.android.material.chip.ChipGroup>
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chip_group10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:chipSpacing="0dp"
+        app:layout_constraintBottom_toTopOf="@id/chip_group100"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_plus10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+10" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_minus10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-10" />
+    </com.google.android.material.chip.ChipGroup>
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chip_group100"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:chipSpacing="0dp"
+        app:layout_constraintBottom_toTopOf="@id/dividerdown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_plus100"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+100" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_minus100"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-100" />
+
+    </com.google.android.material.chip.ChipGroup>
+
+    <View
+        android:id="@+id/dividerdown"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toTopOf="@id/button_secondback" />
+
+
+    <Button
+        android:id="@+id/button_secondback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        android:text="@string/back"
+        app:layout_constraintEnd_toStartOf="@+id/button_validateentry"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/chip_group100" />
+
+    <Button
+        android:id="@+id/button_validateentry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create New Entry"
+        app:layout_constraintBaseline_toBaselineOf="@+id/button_secondback"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/button_secondback" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
