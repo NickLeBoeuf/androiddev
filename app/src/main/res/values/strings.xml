@@ -13,5 +13,5 @@
 
     <string name="text_first_fragment">Status screen with total KMs</string>
     <string name="text_second_fragment">Enter a new itinerary</string>
-    <string name="text_third_fragment">Screen to display history</string>
+    <string name="text_third_fragment">History of entries</string>
 </resources>

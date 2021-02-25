@@ -8,9 +8,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
+import androidx.fragment.app.FragmentActivity
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.chip.Chip
+import java.io.File
+import java.io.FileInputStream
 import java.util.*
 
 /**
@@ -20,12 +24,14 @@ class SecondFragment : Fragment() {
 
     lateinit var datePicker: DatePickerHelper
     var kmentry : Int = 0
+    lateinit var dateEntry : String
+    lateinit var itineraryEntry : String
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-
+//
         val activity = activity as Context
         datePicker = DatePickerHelper(activity)
         // Inflate the layout for this fragment
@@ -35,12 +41,17 @@ class SecondFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val activity = activity as Context
+        val FILE_NAME = "kmlogger_datafile.txt"
+        val file = File(activity.filesDir, FILE_NAME)
+
         val c = Calendar.getInstance()
         val year = c.get(Calendar.YEAR)
         val month = c.get(Calendar.MONTH) + 1
         val day = c.get(Calendar.DAY_OF_MONTH)
+        dateEntry = "$day / $month / $year"
 
-        view.findViewById<TextView>(R.id.textDate).text = "$day / $month / $year"
+        view.findViewById<TextView>(R.id.textDate).text = dateEntry
         view.findViewById<TextView>(R.id.textDate).setOnClickListener{showDatePickerDialog(view)}
 
         view.findViewById<Button>(R.id.button_secondback).setOnClickListener {
@@ -54,7 +65,21 @@ class SecondFragment : Fragment() {
         view.findViewById<Chip>(R.id.chip_plus100).setOnClickListener{ addKm(100,view) }
         view.findViewById<Chip>(R.id.chip_minus100).setOnClickListener{ addKm(-100,view) }
 
+        view.findViewById<Button>(R.id.button_validateentry).setOnClickListener{ writeNewEntry(file,view)}
+//          view.findViewById<Button>(R.id.button_validateentry).text = "Changed"
 
+        val readResult = FileInputStream(file).bufferedReader().use { it.readText() }
+        println("### reading file : ###")
+        println("readResult=$readResult")
+
+    }
+
+    fun writeNewEntry(file : File,view :View) {
+      // create new entry with kmEntry dateEntry and destinationEntry
+        itineraryEntry = view.findViewById<EditText>(R.id.textInputEditItineraire).text.toString()
+        var entry : String
+        entry = dateEntry + " " + kmentry + " " +itineraryEntry+"\n"
+        file.appendText(entry)
     }
 
     fun addKm(value: Int,view : View) {
@@ -72,8 +97,14 @@ class SecondFragment : Fragment() {
                 val dayStr = if (dayofMonth < 10) "0${dayofMonth}" else "${dayofMonth}"
                 val mon = month + 1
                 val monthStr = if (mon < 10) "0${mon}" else "${mon}"
-                view.findViewById<TextView>(R.id.textDate).text = "${dayStr}/${monthStr}/${year}"
+                dateEntry = "${dayStr}/${monthStr}/${year}"
+                view.findViewById<TextView>(R.id.textDate).text = dateEntry
             }
         })
     }
+
+
+
+
+
 }

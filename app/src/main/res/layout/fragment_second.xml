@@ -37,18 +37,20 @@
         app:layout_constraintTop_toBottomOf="@id/dividerup"
         tools:layout_editor_absoluteX="47dp" />
 
-
-    <com.google.android.material.textfield.TextInputEditText
+    <EditText
         android:id="@+id/textInputEditItineraire"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:ems="10"
+        style="@style/BaseStyle"
+        android:inputType="textPersonName"
         android:hint="destination"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textDate"
-        tools:layout_editor_absoluteX="-30dp"
-        tools:layout_editor_absoluteY="477dp" />
+        app:layout_constraintTop_toBottomOf="@id/textDate" />
+
+
 
     <TextView
         android:id="@+id/kmNumber"
@@ -161,6 +163,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/button_secondback" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
