@@ -31,6 +31,8 @@ class FirstFragment : Fragment() {
         val FILE_NAME = "kmlogger_datafile.txt"
         val file = File(activity.filesDir, FILE_NAME)
 
+        createfileifdoesnotexist(file)
+
 
         view.findViewById<Button>(R.id.button_newentry).setOnClickListener {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
@@ -61,5 +63,14 @@ class FirstFragment : Fragment() {
         file.appendText("10/2/2021 25Km Cagnes\n")
         file.appendText("15/2/2021 25Km Cagnes\n")
         file.appendText("18/2/2021 15Km Grasse\n")
+    }
+
+    fun createfileifdoesnotexist(file: File) {
+        if (!file.exists()) {
+            file.createNewFile()
+            println("######### create kmlogger_datafile.txt")
+        } else {
+            println("######### File already exists. Do Nothing")
+        }
     }
 }
