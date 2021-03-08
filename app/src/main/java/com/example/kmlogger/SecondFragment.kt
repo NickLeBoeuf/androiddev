@@ -81,10 +81,10 @@ class SecondFragment : Fragment() {
         var entry : String
         entry = dateEntry + " " + kmentry + " " +itineraryEntry+"\n"
         var newpath = OnePath(dateEntry,kmentry,itineraryEntry)
-        paths.add(newpath)
+        //paths.entries.add(newpath)
         var gson = Gson()
-        var jsonString: String = gson.toJson(paths)
-        file.writeText(jsonString)
+        //var jsonString: String = gson.toJson(paths)
+        //file.writeText(jsonString)
     }
 
     fun addKm(value: Int,view : View) {
