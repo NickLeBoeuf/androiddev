@@ -13,6 +13,7 @@ import android.widget.TextView
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.chip.Chip
+import com.google.gson.Gson
 import java.io.File
 import java.io.FileInputStream
 import java.util.*
@@ -79,7 +80,11 @@ class SecondFragment : Fragment() {
         itineraryEntry = view.findViewById<EditText>(R.id.textInputEditItineraire).text.toString()
         var entry : String
         entry = dateEntry + " " + kmentry + " " +itineraryEntry+"\n"
-        file.appendText(entry)
+        var newpath = OnePath(dateEntry,kmentry,itineraryEntry)
+        paths.add(newpath)
+        var gson = Gson()
+        var jsonString: String = gson.toJson(paths)
+        file.writeText(jsonString)
     }
 
     fun addKm(value: Int,view : View) {
