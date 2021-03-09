@@ -20,6 +20,7 @@ import com.google.gson.reflect.TypeToken
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 
+//
 
 val mutableListArrayOnePathType = object : TypeToken<MutableList<OnePath>>() {}.type
  var paths : MutableList<OnePath> = mutableListOf(OnePath("12/12/2012", 0 , "nowhere"))
