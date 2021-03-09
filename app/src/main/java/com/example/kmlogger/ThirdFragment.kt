@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.navigation.fragment.findNavController
+import com.google.gson.Gson
 import java.io.BufferedInputStream
 import java.io.BufferedReader
 import java.io.File
@@ -30,13 +31,16 @@ class ThirdFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val activity = activity as Context
-        val FILE_NAME = "kmlogger_datafile.txt"
-        val file = File(activity.filesDir, FILE_NAME)
-        val readResult = FileInputStream(file).bufferedReader().use { it.readText() }
-        println("### reading file : ###")
-        println("readResult=$readResult")
-        view.findViewById<TextView>(R.id.scroll_text).text = readResult
+//        val activity = activity as Context
+//        val FILE_NAME = "kmlogger_datafile.txt"
+//        val file = File(activity.filesDir, FILE_NAME)
+//        val readResult = FileInputStream(file).bufferedReader().use { it.readText() }
+//        println("### reading file : ###")
+//        println("readResult=$readResult")
+
+        var pathsHistory : String = "   Date  Distance Itineraire\n"
+        paths.forEachIndexed{ idx, path -> pathsHistory=pathsHistory + "${path.toBasicString()}\n" }
+        view.findViewById<TextView>(R.id.scroll_text).text = pathsHistory
 
 //        val bufferedReader: BufferedReader = FileInputStream(file).bufferedReader()
 //        val inputString = bufferedReader.use { it.readText()}

@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import android.widget.Button
+import android.widget.TextView
 import androidx.core.util.lruCache
 import androidx.navigation.fragment.findNavController
 import java.io.File
@@ -20,26 +21,8 @@ import com.google.gson.reflect.TypeToken
  */
 
 
-
-data class OnePath (
-    var date: String = "date",
-    var distance: String = "0",
-    var itinerary: String = "Neverland")
-    {
-
-    constructor(date: String, distance: Int, itinerary: String) : this(date,distance.toString(),itinerary)
-
-    override fun toString(): String {
-        return "date: ${this.date} distance: ${this.distance} itinerary: ${this.itinerary}"
-    }
-
-    fun toBasicString(): String {
-        return "${this.date} ${this.distance}Km ${this.itinerary}"
-    }
-}
-
 val mutableListArrayOnePathType = object : TypeToken<MutableList<OnePath>>() {}.type
-lateinit var paths : MutableList<OnePath>
+ var paths : MutableList<OnePath> = mutableListOf(OnePath("12/12/2012", 0 , "nowhere"))
 
 class FirstFragment : Fragment() {
 
@@ -70,6 +53,11 @@ class FirstFragment : Fragment() {
             deletedb(file)
         }
 
+        var totalDistance : Int = 0
+        paths.forEachIndexed{ idx, path -> totalDistance = totalDistance + path.distance.toInt()}
+//        var totalDistanceStr = totalDistance.toString()
+        view.findViewById<TextView>(R.id.textview_first).text = "Distance Totale:\n ${totalDistance}Km"
+
     }
 
     fun deletedb(file: File) {
@@ -81,6 +69,7 @@ class FirstFragment : Fragment() {
             file.delete()
             file.createNewFile()
         }
+
 
         var path1 = OnePath("12/12/2021", 12, "Cagnes")
         var path2 = OnePath("03/03/2021", 4, "Mouans")
@@ -97,6 +86,7 @@ class FirstFragment : Fragment() {
     fun createfileifdoesnotexist(file: File) {
         if (!file.exists()) {
             file.createNewFile()
+            deletedb(file)
             println("######### create empty kmlogger_datafile.txt")
         } else {
             println("######### File already exists. Read it and initialize paths object")

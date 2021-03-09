@@ -48,9 +48,11 @@ class SecondFragment : Fragment() {
 
         val c = Calendar.getInstance()
         val year = c.get(Calendar.YEAR)
-        val month = c.get(Calendar.MONTH) + 1
+        var month = c.get(Calendar.MONTH) + 1
+        var monthStr = if (month < 10) "0${month}" else "${month}"
         val day = c.get(Calendar.DAY_OF_MONTH)
-        dateEntry = "$day / $month / $year"
+        val dayStr = if (day < 10) "0${day}" else "${day}"
+        dateEntry = "$dayStr/$monthStr/$year"
 
         view.findViewById<TextView>(R.id.textDate).text = dateEntry
         view.findViewById<TextView>(R.id.textDate).setOnClickListener{showDatePickerDialog(view)}
@@ -69,22 +71,17 @@ class SecondFragment : Fragment() {
         view.findViewById<Button>(R.id.button_validateentry).setOnClickListener{ writeNewEntry(file,view)}
 //          view.findViewById<Button>(R.id.button_validateentry).text = "Changed"
 
-        val readResult = FileInputStream(file).bufferedReader().use { it.readText() }
-        println("### reading file : ###")
-        println("readResult=$readResult")
 
     }
 
     fun writeNewEntry(file : File,view :View) {
-      // create new entry with kmEntry dateEntry and destinationEntry
+      // create new entry with kmEntry dateEntry and destinationEntry and save it in JSON file
         itineraryEntry = view.findViewById<EditText>(R.id.textInputEditItineraire).text.toString()
-        var entry : String
-        entry = dateEntry + " " + kmentry + " " +itineraryEntry+"\n"
         var newpath = OnePath(dateEntry,kmentry,itineraryEntry)
-        //paths.entries.add(newpath)
+        paths.add(newpath)
         var gson = Gson()
-        //var jsonString: String = gson.toJson(paths)
-        //file.writeText(jsonString)
+        var jsonString: String = gson.toJson(paths)
+        file.writeText(jsonString)
     }
 
     fun addKm(value: Int,view : View) {

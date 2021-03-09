@@ -31,6 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="history\n1\n2\n3\n4\n5\n"
+            android:textAlignment="textStart"
             style="@style/BaseStyle"
             app:layout_constraintBottom_toTopOf="@id/button_third"
             app:layout_constraintEnd_toEndOf="parent"
