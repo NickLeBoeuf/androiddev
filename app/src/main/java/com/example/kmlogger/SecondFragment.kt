@@ -12,6 +12,8 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.fragment.findNavController
+import com.example.kmlogger.R.id.action_SecondFragment_to_FirstFragment
+import com.example.kmlogger.R.id.action_SecondFragment_to_ThirdFragment
 import com.google.android.material.chip.Chip
 import com.google.gson.Gson
 import java.io.File
@@ -58,7 +60,7 @@ class SecondFragment : Fragment() {
         view.findViewById<TextView>(R.id.textDate).setOnClickListener{showDatePickerDialog(view)}
 
         view.findViewById<Button>(R.id.button_secondback).setOnClickListener {
-            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
+            findNavController().navigate(action_SecondFragment_to_FirstFragment)
         }
 
         view.findViewById<Chip>(R.id.chip_plus1).setOnClickListener{ addKm(1,view) }
@@ -82,6 +84,7 @@ class SecondFragment : Fragment() {
         var gson = Gson()
         var jsonString: String = gson.toJson(paths)
         file.writeText(jsonString)
+        findNavController().navigate(action_SecondFragment_to_ThirdFragment)
     }
 
     fun addKm(value: Int,view : View) {
