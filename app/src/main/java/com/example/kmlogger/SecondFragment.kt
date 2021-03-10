@@ -23,6 +23,7 @@ import java.util.*
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
+
 class SecondFragment : Fragment() {
 
     lateinit var datePicker: DatePickerHelper
@@ -43,6 +44,7 @@ class SecondFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
         val activity = activity as Context
         val FILE_NAME = "kmlogger_datafile.txt"

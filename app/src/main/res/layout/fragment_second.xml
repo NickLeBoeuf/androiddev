@@ -8,10 +8,10 @@
 
     <TextView
         android:id="@+id/textview_second"
+        style="@style/BaseStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/text_second_fragment"
-        style="@style/BaseStyle"
         app:layout_constraintBottom_toTopOf="@id/dividerup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,11 +27,11 @@
 
     <TextView
         android:id="@+id/textDate"
+        style="@style/BaseStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:text="12/12/12"
-        style="@style/BaseStyle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/dividerup"
@@ -39,24 +39,23 @@
 
     <EditText
         android:id="@+id/textInputEditItineraire"
+        style="@style/BaseStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        style="@style/BaseStyle"
-        android:inputType="textPersonName"
         android:hint="destination"
+        android:inputType="textPersonName"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textDate" />
 
 
-
     <TextView
         android:id="@+id/kmNumber"
+        style="@style/BaseStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/BaseStyle"
         android:ems="10"
         android:inputType="number"
         android:text="0 Km"
